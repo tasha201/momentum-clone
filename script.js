@@ -1,3 +1,4 @@
+// fetching background image
 fetch(
   "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
 )
@@ -11,6 +12,7 @@ fetch(
     document.getElementById("author").textContent = `By: Dodi Achmad`;
   });
 
+  // fetching bitcoin data
 fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
   .then((res) => {
     if (!res.ok) {
@@ -31,13 +33,14 @@ fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
   })
   .catch((err) => console.error(err));
 
-// function getCurrentTime() {
-//     const date = new Date()
-//     document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
-// }
+// get and display current time
+function getCurrentTime() {
+    const date = new Date()
+    document.getElementById("time").textContent = date.toLocaleTimeString("en-us", {timeStyle: "short"})
+}
+setInterval(getCurrentTime, 1000);
 
-// setInterval(getCurrentTime, 1000);
-
+// get current position for weather api
 navigator.geolocation.getCurrentPosition((position) => {
   fetch(
     `https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&units=metric`
@@ -49,7 +52,6 @@ navigator.geolocation.getCurrentPosition((position) => {
       return res.json();
     })
     .then((data) => {
-      // console.log(data);
       const iconUrl = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
       document.getElementById("weather").innerHTML = `
                 <img src=${iconUrl} />
@@ -59,3 +61,18 @@ navigator.geolocation.getCurrentPosition((position) => {
     })
     .catch(err => console.error(err));
 });
+
+// quote generator
+async function getQuote() {
+  try {
+    await fetch("https://api.quotable.io/random")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        document.getElementById("quote").innerText =`"${data.content}"`;
+      });
+  } catch (error) {
+      console.error("Error:", error);
+  }
+}
+window.addEventListener("load", getQuote);
