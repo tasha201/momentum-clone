@@ -85,13 +85,14 @@ window.addEventListener("load", getQuote);
 const date = new Date();
 const hours = date.getHours();
 const greeting = document.getElementById("greeting");
+let user = "Natalia";
 
 if (hours >= 4 && hours <= 12) {
-  greeting.textContent = `Good morning, Natalia`;
+  greeting.textContent = `Good morning, ${user}`;
 } else if (hours >= 18) {
-  greeting.textContent = `Good afternoon, Natalia`;
+  greeting.textContent = `Good afternoon, ${user}`;
 } else {
-  greeting.textContent = `Good evening, Natalia`;
+  greeting.textContent = `Good evening, ${user}`;
 }
 
 function handleInputChange(event) {
