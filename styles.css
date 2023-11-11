@@ -30,6 +30,13 @@ div.top {
 h1.time {
   text-align: center;
   font-size: 6rem;
+  margin: 0;
+}
+
+p#greeting {
+  text-align: center;
+  font-size: 3rem;
+  margin: 0;
 }
 
 div#crypto {
@@ -78,7 +85,7 @@ p.weather-temp {
 .bottom {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
 p#author {
@@ -87,4 +94,6 @@ p#author {
 
 p.quote {
   font-size: 1.4rem;
+  width: 50%;
+  text-align: center;
 }
