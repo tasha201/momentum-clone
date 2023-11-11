@@ -35,7 +35,7 @@ h1.time {
 
 p#greeting {
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0;
 }
 
@@ -43,7 +43,7 @@ div#crypto {
   font-size: 1.3rem;
 }
 
-div#crypto>p {
+div#crypto > p {
   margin: 0;
 }
 
@@ -54,7 +54,7 @@ div#crypto-top {
   cursor: pointer;
 }
 
-div#crypto-top>span {
+div#crypto-top > span {
   margin-left: 10px;
 }
 
@@ -66,7 +66,7 @@ div#weather {
   align-self: flex-start;
 }
 
-div#weather>img {
+div#weather > img {
   width: 70px;
 }
 
@@ -97,4 +97,38 @@ p.quote {
   font-size: 1.4rem;
   width: 50%;
   text-align: center;
+}
+
+div#focus-block {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 40px auto;
+  font-size: 1.4rem;
+  text-align: center;
+  text-shadow: 0px 0px 20px #aaa;
+  text-transform: uppercase;
+}
+
+input#focus {
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+input::placeholder {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0px 0px 20px #aaa;
+}
+
+p#message {
+  margin: 10px 0 0;
+  cursor: pointer;
 }

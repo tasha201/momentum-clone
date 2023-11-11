@@ -72,7 +72,7 @@ async function getQuote() {
     await fetch("https://api.quotable.io/random")
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         document.getElementById("quote").innerText =`"${data.content}"`;
       });
   } catch (error) {
@@ -93,3 +93,17 @@ if (hours >= 4 && hours <= 12) {
 } else {
   greeting.textContent = `Good evening, Natalia`;
 }
+
+function handleInputChange(event) {
+  document.getElementById("focus").value = event.target.value;
+  //  console.log(event.target.value)
+  document.getElementById("focus").style.display = "none"
+  document.getElementById("message").textContent = event.target.value;
+}
+
+function editing() {
+  document.getElementById("focus").style.display = "block"
+}
+
+document.getElementById("focus").addEventListener("change", handleInputChange)
+document.getElementById("message").addEventListener("click", editing)
