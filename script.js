@@ -12,6 +12,7 @@ fetch(
   .catch((err) => {
     document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwyMTEwMjl8MHwxfHJhbmRvbXx8fHx8fHx8fDE2MjI4NDE2NzA&ixlib=rb-1.2.1&q=80&w=1080)`;
     document.getElementById("author").textContent = `By: Dodi Achmad`;
+    console.error(err);
   });
 
 // fetching bitcoin data
@@ -58,6 +59,11 @@ function getCurrentTime() {
   const minutes = day.getMinutes();
   document.getElementById("hour").textContent = `${hour}`;
   document.getElementById("minutes").textContent = `${minutes}`;
+  if (minutes <= 9) {
+    document.querySelector("#minutes").innerHTML = "0" + minutes;
+  } else {
+    document.querySelector("#minutes").innerHTML = minutes;
+  }
 }
 getCurrentTime();
 
@@ -89,8 +95,32 @@ async function getQuote() {
     await fetch("https://api.quotable.io/random")
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data)
-        document.getElementById("quote").innerText = `"${data.content}"`;
+        const quoteWithoutAuthor = (document.getElementById(
+          "quote"
+        ).innerText = `"${data.content}"`);
+
+        function mouseOverQuote() {
+          document.getElementById("quote").style.display = "none";
+          document.getElementById("quoteWithAuthor").style.display = "block";
+          document.getElementById(
+            "quoteWithAuthor"
+          ).innerText = `${quoteWithoutAuthor}
+           - ${data.author}`;
+          document.getElementById(
+            "quoteWithAuthor"
+          ).style.margin = "10px";
+        }
+
+        function mouseOutQuote() {
+          document.getElementById("quote").style.display = "block";
+          document.getElementById("quoteWithAuthor").style.display = "none";
+        }
+        document
+          .getElementById("quote")
+          .addEventListener("mouseover", mouseOverQuote);
+        document
+          .getElementById("quote")
+          .addEventListener("mouseout", mouseOutQuote);
       });
   } catch (error) {
     console.error("Error:", error);
@@ -108,7 +138,7 @@ if (hours >= 4 && hours <= 12) {
   greeting.textContent = `Good morning, ${user}`;
 } else if (hours >= 12 && hours <= 18) {
   greeting.textContent = `Good afternoon, ${user}`;
-} else if(hours < 4 || hours > 18){
+} else if (hours < 4 || hours > 18) {
   greeting.textContent = `Good evening, ${user}`;
 }
 
@@ -124,5 +154,3 @@ function editing() {
 
 document.getElementById("focus").addEventListener("change", handleInputChange);
 document.getElementById("message").addEventListener("click", editing);
-
-
