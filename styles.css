@@ -139,3 +139,23 @@ p#message {
   cursor: pointer;
 }
 
+p#todo {
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.todo-block {
+  position: relative;
+}
+
+#todo-app {
+  width: 320px;
+  height: 250px;
+  background-color: #fff;
+  display: none;
+  color: #000;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+}

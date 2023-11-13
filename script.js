@@ -154,3 +154,16 @@ function editing() {
 
 document.getElementById("focus").addEventListener("change", handleInputChange);
 document.getElementById("message").addEventListener("click", editing);
+
+// Todo
+function handleTodoClick() {
+
+  const todoElement = document.getElementById("todo-app");
+  todoElement.style.display = "block"
+  todoElement.innerHTML = `
+    <h3>Today</h3>
+    <p>Add a todo to get started</p>
+    <button>New todo</button>
+  `
+}
+document.getElementById("todo").addEventListener("click", handleTodoClick)
