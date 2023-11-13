@@ -42,14 +42,24 @@ fetch("https://api.coingecko.com/api/v3/coins/bitcoin")
   .catch((err) => console.error(err));
 
 // get and display current time
+
+// function getCurrentTime() {
+//   const date = new Date();
+//   document.getElementById("time").textContent = date.toLocaleTimeString(
+//     "en-us",
+//     { timeStyle: "short" }
+//   );
+// }
+// setInterval(getCurrentTime, 1000);
+
 function getCurrentTime() {
-  const date = new Date();
-  document.getElementById("time").textContent = date.toLocaleTimeString(
-    "en-us",
-    { timeStyle: "short" }
-  );
+  const day = new Date();
+  const hour = day.getHours();
+  const minutes = day.getMinutes();
+  document.getElementById("hour").textContent = `${hour}`;
+  document.getElementById("minutes").textContent = `${minutes}`;
 }
-setInterval(getCurrentTime, 1000);
+getCurrentTime();
 
 // get current position for weather api
 navigator.geolocation.getCurrentPosition((position) => {
@@ -96,15 +106,14 @@ let user = "Natalia";
 
 if (hours >= 4 && hours <= 12) {
   greeting.textContent = `Good morning, ${user}`;
-} else if (hours >= 18) {
+} else if (hours >= 12 && hours <= 18) {
   greeting.textContent = `Good afternoon, ${user}`;
-} else {
+} else if(hours < 4 || hours > 18){
   greeting.textContent = `Good evening, ${user}`;
 }
 
 function handleInputChange(event) {
   document.getElementById("focus").value = event.target.value;
-  //  console.log(event.target.value)
   document.getElementById("focus").style.display = "none";
   document.getElementById("message").textContent = event.target.value;
 }
@@ -116,12 +125,4 @@ function editing() {
 document.getElementById("focus").addEventListener("change", handleInputChange);
 document.getElementById("message").addEventListener("click", editing);
 
-// receipt card
-function handleClickOnReceipt() {
-  document.getElementById("receipt").style.display = "none";
-  document.getElementById("flip-card").style.display = "block";
-}
 
-document
-  .getElementById("receipt")
-  .addEventListener("click", handleClickOnReceipt);
