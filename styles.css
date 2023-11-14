@@ -236,4 +236,6 @@ p#todo {
 
 #todo-task-block {
   display: none;
+  list-style-type: none;
+  padding: 0;
 }

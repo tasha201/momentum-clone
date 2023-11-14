@@ -165,10 +165,7 @@ function handleTodoClick() {
     </div>
     <p id="todo-app-text">Add a todo to get started</p>
     <button id="todo-app-button" class="todo-app-button">New todo</button>
-    <div id="todo-task-block">
-      <input type="checkbox" id="checkbox" />
-      <p id="task"></p>
-    </div>
+    <ul id="todo-task-block"></ul>
     <input type="text" placeholder="New Todo" class="todo-app-input" id="todo-app-input" />
   `;
   // click on todo button and displaying input for adding todo-text
@@ -192,15 +189,21 @@ function handleTodoClick() {
   function handleInputChange(event) {
     const inputValue = document.getElementById("todo-app-input").value = event.target.value;
     document.getElementById("todo-app-text").style.display = "none";
-    document.getElementById("todo-task-block").style.display = "flex";
-    document.getElementById("todo-task-block").style.gap = "20px";
-    document.getElementById("todo-task-block").style.marginTop = "10px";
     todoElement.style.height = "auto";
-    document.getElementById("todo-app-input").style.marginTop = "40px"
-    document.getElementById("task").textContent = inputValue;
+    document.getElementById("todo-app-input").style.marginTop = "40px";
+
+    document.getElementById("todo-task-block").innerHTML += `
+      <li>
+        <input type="checkbox" name="checkbox" />
+        <span class="task">${inputValue}</span>
+      </li>
+    `
+    document.getElementById("todo-task-block").style.display = "flex";
+    document.getElementById("todo-task-block").style.flexDirection = "column";
+    document.getElementById("todo-task-block").style.gap = "10px";
+    document.getElementById("todo-task-block").style.marginTop = "20px";
     document.getElementById("todo-app-input").value = "";
   }
-
   document.getElementById("todo-app-input").addEventListener("change", handleInputChange);
 }
 document.getElementById("todo").addEventListener("click", handleTodoClick);
