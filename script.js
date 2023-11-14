@@ -106,9 +106,7 @@ async function getQuote() {
             "quoteWithAuthor"
           ).innerText = `${quoteWithoutAuthor}
            - ${data.author}`;
-          document.getElementById(
-            "quoteWithAuthor"
-          ).style.margin = "10px";
+          document.getElementById("quoteWithAuthor").style.margin = "10px";
         }
 
         function mouseOutQuote() {
@@ -155,26 +153,35 @@ function editing() {
 document.getElementById("focus").addEventListener("change", handleInputChange);
 document.getElementById("message").addEventListener("click", editing);
 
-// Todo
+// Todo section
 function handleTodoClick() {
-
   const todoElement = document.getElementById("todo-app");
-  todoElement.style.display = "block"
+  todoElement.style.display = "block";
   todoElement.innerHTML = `
     <div class="todo-app-top">
       <h3 class="todo-app-header">Today</h3>
       <img src="./icons/more.png" alt="more icon" class="more-icon" />
+      <img src="./icons/close.png" alt="close-icon" class="close-icon" id="close-icon" />
     </div>
     <p class="todo-app-text">Add a todo to get started</p>
     <button id="todo-app-button" class="todo-app-button">New todo</button>
-    <input type="text" placeholder="New Todo" class="todo-app-input" />
-  `
+    <input type="text" placeholder="New Todo" class="todo-app-input" id="todo-app-input" />
+  `;
+  // click on todo button and displaying input for adding todo-text
+  function handleTodoButtonClick() {
+    document.getElementById("todo-app-button").style.display = "none";
+    document.getElementById("todo-app-input").style.display = "block";
+  }
+  document
+    .getElementById("todo-app-button")
+    .addEventListener("click", handleTodoButtonClick);
+
+  // close todo section with close-icon
+  function handleCloseIconClick() {
+    todoElement.style.display = "none";
+  }
+  document
+    .getElementById("close-icon")
+    .addEventListener("click", handleCloseIconClick);
 }
-
-function handleTodoButtonClick() {
-  document.getElementById("todo-app-button").style.display = "none";
-
-}
-
 document.getElementById("todo").addEventListener("click", handleTodoClick);
-document.getElementById("todo-app-button").addEventListener("click", handleTodoButtonClick);

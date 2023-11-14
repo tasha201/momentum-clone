@@ -178,6 +178,17 @@ p#todo {
   width: 20px;
 }
 
+.close-icon {
+  width: 22px;
+  position: absolute;
+  top: -30px;
+  right: 0;
+  background-color: #ffffff3a;
+  padding: 3px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 .todo-app-text {
   text-align: center;
   font-size: 1rem;
@@ -205,9 +216,8 @@ p#todo {
 
 .todo-app-input {
   font-size: 1.1rem;
-  /* padding: 5px 0; */
-  display: block;
-  margin: 40px 0;
+  display: none;
+  margin: 90px 0;
   border: none;
 }
 
