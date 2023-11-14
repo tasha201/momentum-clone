@@ -161,9 +161,20 @@ function handleTodoClick() {
   const todoElement = document.getElementById("todo-app");
   todoElement.style.display = "block"
   todoElement.innerHTML = `
-    <h3>Today</h3>
-    <p>Add a todo to get started</p>
-    <button>New todo</button>
+    <div class="todo-app-top">
+      <h3 class="todo-app-header">Today</h3>
+      <img src="./icons/more.png" alt="more icon" class="more-icon" />
+    </div>
+    <p class="todo-app-text">Add a todo to get started</p>
+    <button id="todo-app-button" class="todo-app-button">New todo</button>
+    <input type="text" placeholder="New Todo" class="todo-app-input" />
   `
 }
-document.getElementById("todo").addEventListener("click", handleTodoClick)
+
+function handleTodoButtonClick() {
+  document.getElementById("todo-app-button").style.display = "none";
+
+}
+
+document.getElementById("todo").addEventListener("click", handleTodoClick);
+document.getElementById("todo-app-button").addEventListener("click", handleTodoButtonClick);
