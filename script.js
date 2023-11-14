@@ -163,8 +163,12 @@ function handleTodoClick() {
       <img src="./icons/more.png" alt="more icon" class="more-icon" />
       <img src="./icons/close.png" alt="close-icon" class="close-icon" id="close-icon" />
     </div>
-    <p class="todo-app-text">Add a todo to get started</p>
+    <p id="todo-app-text">Add a todo to get started</p>
     <button id="todo-app-button" class="todo-app-button">New todo</button>
+    <div id="todo-task-block">
+      <input type="checkbox" id="checkbox" />
+      <p id="task"></p>
+    </div>
     <input type="text" placeholder="New Todo" class="todo-app-input" id="todo-app-input" />
   `;
   // click on todo button and displaying input for adding todo-text
@@ -183,5 +187,20 @@ function handleTodoClick() {
   document
     .getElementById("close-icon")
     .addEventListener("click", handleCloseIconClick);
+
+  // handle input change
+  function handleInputChange(event) {
+    const inputValue = document.getElementById("todo-app-input").value = event.target.value;
+    document.getElementById("todo-app-text").style.display = "none";
+    document.getElementById("todo-task-block").style.display = "flex";
+    document.getElementById("todo-task-block").style.gap = "20px";
+    document.getElementById("todo-task-block").style.marginTop = "10px";
+    todoElement.style.height = "auto";
+    document.getElementById("todo-app-input").style.marginTop = "40px"
+    document.getElementById("task").textContent = inputValue;
+    document.getElementById("todo-app-input").value = "";
+  }
+
+  document.getElementById("todo-app-input").addEventListener("change", handleInputChange);
 }
 document.getElementById("todo").addEventListener("click", handleTodoClick);

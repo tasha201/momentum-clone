@@ -189,7 +189,7 @@ p#todo {
   cursor: pointer;
 }
 
-.todo-app-text {
+#todo-app-text {
   text-align: center;
   font-size: 1rem;
   margin-top: 50px;
@@ -217,7 +217,7 @@ p#todo {
 .todo-app-input {
   font-size: 1.1rem;
   display: none;
-  margin: 90px 0;
+  margin: 90px 0 0;
   border: none;
 }
 
@@ -232,4 +232,8 @@ p#todo {
   color: #000;
   opacity: 0.6;
   outline: none;
+}
+
+#todo-task-block {
+  display: none;
 }
