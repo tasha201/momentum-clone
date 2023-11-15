@@ -244,3 +244,31 @@ p#todo {
   display: flex;
   gap: 10px;
 }
+
+@media (max-width: 768px) {
+  main {
+    padding: 25px;
+  }
+  h1.time {
+    font-size: 6rem;
+  }
+  p#greeting{
+    font-size: 2rem;
+  }
+  div#focus-block {
+    width: 70%;
+    font-size: 1rem;
+  }
+  input#focus {
+    width: 250px;
+  }
+  .bottom {
+    display: block;
+  }
+  p.quote {
+    width: 100%;
+  }
+  p#author {
+    display: none;
+  }
+}
