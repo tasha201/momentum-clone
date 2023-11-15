@@ -239,3 +239,8 @@ p#todo {
   list-style-type: none;
   padding: 0;
 }
+
+#todo-task-block .task {
+  display: flex;
+  gap: 10px;
+}

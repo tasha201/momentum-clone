@@ -65,7 +65,8 @@ function getCurrentTime() {
     document.querySelector("#minutes").innerHTML = minutes;
   }
 }
-getCurrentTime();
+// getCurrentTime();
+setInterval(getCurrentTime, 1000);
 
 // get current position for weather api
 navigator.geolocation.getCurrentPosition((position) => {
@@ -192,10 +193,18 @@ function handleTodoClick() {
     todoElement.style.height = "auto";
     document.getElementById("todo-app-input").style.marginTop = "40px";
 
+    // document.getElementById("todo-task-block").innerHTML += `
+    //   <li>
+    //     <input type="checkbox" name="checkbox" class="checkbox"
+    //       onchange="handleCheckBoxChange()" />
+    //     <span class="task">${inputValue}</span>
+    //   </li>
+    // `
+
     document.getElementById("todo-task-block").innerHTML += `
       <li>
-        <input type="checkbox" name="checkbox" />
-        <span class="task">${inputValue}</span>
+        <label class="task"><input type="checkbox" name="checkbox" class="checkbox"
+          onchange="handleCheckBoxChange()" />${inputValue}</label>
       </li>
     `
     document.getElementById("todo-task-block").style.display = "flex";
@@ -207,3 +216,17 @@ function handleTodoClick() {
   document.getElementById("todo-app-input").addEventListener("change", handleInputChange);
 }
 document.getElementById("todo").addEventListener("click", handleTodoClick);
+
+// handle checkbox state change
+function handleCheckBoxChange() {
+  document.querySelector("li").addEventListener("click", function (e) {
+    if (e.target.nodeName !== "span") {
+    return;
+  }
+    e.target.setAttribute("id", e.target.checked ? 1 : 0);
+  })
+}
+
+// if (document.querySelector(".checkbox").checked) {
+//   document.querySelector(".task").classList.add("line-through")
+// }
